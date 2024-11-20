@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding-inline: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(90deg, black, #333);
+}
+
+.photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 735px;
+}
+
+.img {
+    width: 4.4rem;
+    height: 21rem;
+    background-size: cover;
+    background-position: center;
+    transition: 
+        transform 1.25s cubic-bezier(.1, .7, 0, 1),
+        filter 3s cubic-bezier(.1,.7,0,1),
+        width 1s ease;
+    position: relative;
+    filter: blur(3px) brightness(0.5);
+    
+}
+
+.image {
+    display: flex;
+    gap: .5rem;
+    perspective: 60rem;
+}
+
+.img:hover {
+    transform: translateZ(14.375rem);
+    filter: grayscale(0%) brightness(1);
+    /* filter: inherit; */
+    border-radius: 1rem;
+    /* filter: contrast(150%); */
+
+}
+
+.img:hover+* {
+    transform: translateZ(10.77rem) rotateY(35deg);
+    z-index: -1;
+    filter: brightness(.6);
+    /* filter: contrast(150%); */
+}
+
+.img:hover+*+* {
+    transform: translateZ(5.73rem) rotateY(40deg);
+    z-index: -2;
+    filter: brightness(.4);
+    /* filter: contrast(130%); */
+}
+
+.img:hover+*+*+* {
+    transform: translateZ(1.17rem) rotateY(25deg);
+    z-index: -3;
+    filter: brightness(.25);
+    /* filter: contrast(110%); */
+}
+
+/* .img:hover+*+*+*+* { */
+/* transform: translateZ(1.1rem) rotateY(25deg); */
+/* z-index: -4; */
+/* filter: grayscale(.8) brightness(.6);
+    filter: contrast(100%); */
+/* } */
+
+.img:has(+ :hover) {
+    transform: translateZ(10.77rem) rotateY(-35deg);
+    z-index: -1;
+    filter: brightness(.6);
+    /* filter: contrast(150%); */
+}
+
+.img:has(+ * + :hover) {
+    transform: translateZ(5.73rem) rotateY(-40deg);
+    z-index: -2;
+    filter: brightness(.4);
+    /* filter: contrast(130%); */
+}
+
+.img:has(+ * + * + :hover) {
+    transform: translateZ(1.17rem) rotateY(-25deg);
+    z-index: -3;
+    filter: grayscale(.6) brightness(.25);
+    /* filter: contrast(110%); */
+}
+
+/* .img:has(+ * + * + * +:hover) { */
+/* transform: translateZ(1.1rem) rotateY(-25deg); */
+/* z-index: -4; */
+/* filter: grayscale(.8) brightness(.6);
+    filter: contrast(150%); */
+/* } */
+
+.img::before,
+.img::after {
+    content: "";
+    position: absolute;
+    width: 1.25rem;
+    height: 100%;
+    right: -1.25rem;
+}
+
+.img::after {
+    left: -1.25rem;
+}
+
+.open{
+    width: 25vw;
+    transform: translateZ(14.375);
+    filter: inherit;
+    z-index: 1;
+    margin: 0 0.45vw;
+}
